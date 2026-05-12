@@ -8,6 +8,13 @@ public class Dealership {
     private String phone;
     private ArrayList<Vehicle> inventory;
 
+    Dealership(){
+        name = "";
+        address = "";
+        phone = "";
+        inventory = new ArrayList<>();
+    }
+
     Dealership(String name, String address, String phone){
         this.name = name;
         this.address = address;
