@@ -45,4 +45,12 @@ public class Vehicle {
 
     public int getOdometer() { return odometer; }
     public void setOdometer(int odometer) { this.odometer = odometer; }
+
+
+    @Override
+    public String toString() {
+        return "VIN: " + vin + " Year: " + year + " Make: " + make + " Model: " + model +
+                " Vehicle Type: " + vehicleType + " Color: " + color + " Odometer Miles: " +
+                odometer + " Price: " + price;
+    }
 }

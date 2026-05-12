@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dealership {
     private String name;
@@ -22,13 +23,13 @@ public class Dealership {
         inventory = new ArrayList<>();
     }
 
-    public ArrayList<Vehicle> getVehicleByPrice(double min, double max){ return null; }
-    public ArrayList<Vehicle> getVehicleByMakeModel(String make, String model){ return null; }
-    public ArrayList<Vehicle> getVehicleByYear(int min, int max){ return null; }
-    public ArrayList<Vehicle> getVehicleByColor (String color){ return null; }
-    public ArrayList<Vehicle> getVehicleByMileage(int min, int max){ return null; }
-    public ArrayList<Vehicle> getVehicleByType(String vehicleType) { return null; }
-    public ArrayList<Vehicle> getAllVehicle() { return inventory; }
+    public List<Vehicle> getVehicleByPrice(double min, double max){ return null; }
+    public List<Vehicle> getVehicleByMakeModel(String make, String model){ return null; }
+    public List<Vehicle> getVehicleByYear(int min, int max){ return null; }
+    public List<Vehicle> getVehicleByColor (String color){ return null; }
+    public List<Vehicle> getVehicleByMileage(int min, int max){ return null; }
+    public List<Vehicle> getVehicleByType(String vehicleType) { return null; }
+    public List<Vehicle> getAllVehicle() { return inventory; }
 
     public void addVehicle(Vehicle vehicle){ inventory.add(vehicle); }
     public void removeVehicle(Vehicle vehicle){}
@@ -41,4 +42,21 @@ public class Dealership {
 
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
+
+
+    public void convertHeader(String headerLine){
+        String[] parsedHeader = headerLine.split("\\|");
+
+        name = (parsedHeader[0]);
+        address = (parsedHeader[1]);
+        phone = (parsedHeader[2]);
+    }
+
+    public void convertVehicle(String line){
+        String[] parsedLine = line.split("\\|");
+
+        inventory.add(new Vehicle(Integer.parseInt(parsedLine[0]), Integer.parseInt(parsedLine[1]), parsedLine[2], parsedLine[3],
+                parsedLine[4], parsedLine[5], Integer.parseInt(parsedLine[6]), Double.parseDouble(parsedLine[7])));
+    }
+
 }

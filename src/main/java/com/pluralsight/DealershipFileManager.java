@@ -10,15 +10,13 @@ public class DealershipFileManager {
         try {
             BufferedReader bufReader = new BufferedReader(new FileReader("inventory.csv"));
             Dealership dealership = new Dealership();
+            String line = "";
 
-            convertHeader(bufReader.readLine(), dealership);
+            dealership.convertHeader(bufReader.readLine());
 
-            String line = bufReader.readLine();
-            while (line != null){
-                convertVehicle(line, dealership);
-                bufReader.readLine();
+            while ((line = bufReader.readLine()) != null){
+                dealership.convertVehicle(line);
             }
-
             return dealership;
         }
         catch (Exception IOException){
@@ -27,20 +25,6 @@ public class DealershipFileManager {
         }
     }
 
-    public void convertHeader(String headerLine, Dealership dealership){
-        String[] parsedHeader = headerLine.split("\\|");
-
-        dealership.setName(parsedHeader[0]);
-        dealership.setAddress(parsedHeader[1]);
-        dealership.setPhone(parsedHeader[2]);
-    }
-
-    public void convertVehicle(String line, Dealership dealership){
-        String[] parsedLine = line.split("\\|");
-
-        dealership.addVehicle(new Vehicle(Integer.parseInt(parsedLine[0]), Integer.parseInt(parsedLine[1]), parsedLine[2], parsedLine[3],
-                parsedLine[4], parsedLine[5], Integer.parseInt(parsedLine[6]), Double.parseDouble(parsedLine[7])));
-    }
 
     public void saveDealership(Dealership dealership){
 
