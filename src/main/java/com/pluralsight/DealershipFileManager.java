@@ -20,11 +20,10 @@ public class DealershipFileManager {
             return dealership;
         }
         catch (Exception IOException){
-            System.out.println("File not found!");
+            System.out.println("File not found.");
             return null;
         }
     }
-
 
     public void saveDealership(Dealership dealership){
 
@@ -37,6 +36,7 @@ public class DealershipFileManager {
                                     vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor() + "|" +
                                     vehicle.getOdometer() + "|" + vehicle.getPrice());
             }
+            bufWriter.close();
         }
         catch (Exception IOException){
             System.out.println("File not found!");
